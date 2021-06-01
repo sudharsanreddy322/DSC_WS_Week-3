@@ -1,0 +1,161 @@
+#include<stdio.h>
+#include<stdbool.h>
+#include<math.h>
+#include<stdlib.h>
+
+void addition();
+void subtraction();
+void multiplication();
+void division();
+void modulus();
+void bin_to_dec();
+void display();
+
+int main()
+{
+    bool run=true;
+    char operation;
+
+    display();
+
+    while(run)
+    {
+        printf("\nEnter the operation that you want to perform: ");
+        // operation=getche();
+        scanf("%c", &operation);
+
+        switch(operation)
+        {
+            case '+': addition();
+                      break;
+
+            case '-': subtraction();
+                      break;
+
+            case '*': multiplication();
+                      break;
+
+            case '/': division();
+                      break;
+
+            case '?': modulus();
+                      break;
+
+            case '>': bin_to_dec();
+                      break;
+
+            // case '^': power();
+            //           break;
+
+            case 'r': display();
+                      break;
+
+            case 'c': system("clear");
+                      display();
+                      break;
+
+            case 'q': exit(0);
+                      break;
+
+            default : system("clear");
+
+    printf("\n----------you have selected the wrong option-----------\n");
+    printf("\n----------Select any of the given options below-----------\n");
+    display();
+        }
+    }
+}
+
+void display()
+{
+    printf("\n----------CALCULATOR in C---------- \n\n");
+    printf("1. press 'c' to clear the screen and display the available options...or\n");
+    printf("2. press 'q' to quit the program...or\n");
+    printf("3. press 'r' to display the operations...or\n\n");
+    printf("4. Select the any of the below operation: \n");
+ 
+    printf("\t + for Addition \n");
+    printf("\t - for Subtraction \n");
+    printf("\t * for Multiplication \n");
+    printf("\t / for Division \n");
+    printf("\t ? for Modulus\n");
+    printf("\t > for conerting binary to decimal\n\n");
+}
+
+void addition()
+{
+    int n, sum=0, i=0, num;
+    printf("\nEnter the number of elements you want to add: ");
+    scanf("%d",&n);
+    printf("Please enter the numbers: \n");
+    while(i<n)
+    {
+        scanf("%d",&num);
+        sum=sum+num;
+        i=i+1;
+    }
+    printf("Sum of the numbers = %d \n",sum);
+}
+
+void subtraction()
+{
+    int a, b, value = 0;
+    printf("\nPlease enter the first number: ");
+    scanf("%d", &a);
+    printf("Please enter the second number: ");
+    scanf("%d", &b);
+    value = a - b;
+    printf("\nSubtracted value = %d\n",value);
+}
+
+void multiplication()
+{
+    int a, b, value=0;
+    printf("\nPlease enter the first num: ");
+    scanf("%d", &a);
+    printf("Please enter the second num: ");
+    scanf("%d", &b);
+    value=a*b;
+    printf("\nMultiplication of entered numbers = %d\n",value);
+}
+
+void division()
+{
+    int a, b, div=0;
+    printf("\nPlease enter the first number  : ");
+    scanf("%d", &a);
+    printf("Please enter the second number : ");
+    scanf("%d", &b);
+    div=a/b;
+    printf("\nDivision of entered numbers = %d\n",div);
+}
+
+void modulus()
+{
+    int a, b, mod=0;
+    printf("\nPlease enter the first number   : ");
+    scanf("%d", &a);
+    printf("Please enter the second number  : ");
+    scanf("%d", &b);
+    mod=a%b;
+    printf("\nModulus of entered numbers = %d\n",mod);
+}
+
+void bin_to_dec()
+{
+    long long n,temp;
+    int decval=0,i=0,r;
+    printf("Enter the Binary number: ");
+    scanf("%lld", &n);
+    temp = n;
+    while(n != 0){
+        r = n % 10;
+        n = n / 10;
+        decval = decval + r * pow(2,i);
+        i++;
+    }
+
+    printf("The Decimal value of %lld = %d",temp,decval);
+
+
+}
